@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".dummy">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/flag"
+            android:layout_width="300dp"
+            android:layout_height="283dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            android:src="@drawable/common_google_signin_btn_text_dark">
+
+        </ImageView>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="165dp"
+                android:layout_height="47dp"
+                android:layout_marginLeft="25dp"
+                android:text="Owner name"
+                android:textColor="#86AD35"
+                android:textSize="20dp"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="163dp"
+                android:layout_height="47dp"
+                android:layout_marginLeft="200dp"
+                android:layout_marginBottom="50dp"
+                android:textColor="#86AD35"
+                android:textSize="20dp"
+                android:textStyle="bold">
+
+            </TextView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="165dp"
+                android:layout_height="47dp"
+                android:layout_marginLeft="25dp"
+                android:text="Product Id"
+                android:textColor="#86AD35"
+                android:textSize="20dp"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="163dp"
+                android:layout_height="47dp"
+                android:layout_marginLeft="200dp"
+                android:layout_marginBottom="50dp"
+                android:textColor="#86AD35"
+                android:textSize="20dp"
+                android:textStyle="bold">
+
+            </TextView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="165dp"
+                android:layout_height="47dp"
+                android:text="Product Name"
+                android:textColor="#86AD35"
+                android:textStyle="bold"
+                android:layout_marginLeft="25dp"
+                android:textSize="20dp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="163dp"
+                android:layout_height="47dp"
+                android:layout_marginLeft="200dp"
+                android:textSize="20dp"
+                android:textColor="#86AD35"
+                android:textStyle="bold"
+                android:layout_marginBottom="50dp">
+
+            </TextView>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="47dp"
+                android:text="Product category"
+                android:layout_marginLeft="25dp"
+                android:textColor="#86AD35"
+                android:textStyle="bold"
+                android:textSize="20dp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/text3"
+                android:layout_width="163dp"
+                android:layout_height="47dp"
+                android:layout_marginLeft="200dp"
+                android:textColor="#86AD35"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginBottom="50dp">
+
+            </TextView>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="165dp"
+                android:layout_height="47dp"
+                android:text="Product Price"
+                android:textColor="#86AD35"
+                android:textStyle="bold"
+                android:layout_marginLeft="25dp"
+                android:textSize="20dp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/text4"
+                android:layout_width="163dp"
+                android:layout_height="47dp"
+                android:textSize="20dp"
+                android:textColor="#86AD35"
+                android:textStyle="bold"
+                android:layout_marginLeft="200dp"
+                android:layout_marginBottom="50dp">
+
+            </TextView>
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+</ScrollView>

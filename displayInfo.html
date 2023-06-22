@@ -1,0 +1,395 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Fake Product Detection</title>
+    <!-- google-fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Font-Awesome-Icons-CSS -->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/fontawesome-all.min.css')}}">
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style-starter.css')}}">
+
+    <script src="{{url_for('static',filename='new/js/jquery-3.3.1.js')}}"></script>
+    <script src="{{url_for('static',filename='new/blockchain.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+    <style>
+        .drop {
+            width: 100%;
+            height: 50px;
+            color: var(--heading-color);
+            background: var(--bg-grey);
+            font-size: 15px;
+            padding: 10px;
+            border: 1px solid var(--border-color-light);
+            outline: none;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        
+        #ex1Slider .slider-selection {
+            background: #BABABA;
+        }
+    </style>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="index.html">
+                        <i class="fas fa-tools mr-1" aria-hidden="true"></i>Fake Product Detection</a>
+                </h1>
+                <!-- if logo is image enable this   
+    <a class="navbar-brand" href="#index.html">
+        <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+    </a> -->
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/main">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/displayInfo">Generate QR code</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                        <!-- search button -->
+                        <div class="search-right ml-lg-3">
+                            <form action="#search" method="GET" class="search-box position-relative">
+                                <div class="input-search">
+                                    <input type="search" placeholder="Enter Keyword" name="search" required="required" autofocus="" class="search-popup">
+                                </div>
+                                <button type="submit" class="btn search-btn"><i class="fa fa-search"
+                                        aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+                        <!-- //search button -->
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h4 class="inner-text-title font-weight-bold mb-2">Generate QR code</h4>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/main1">Home</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>Generate QR code</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- //inner banner -->
+
+    <!-- contact -->
+    <section class="w3l-subscribe-content py-5">
+        <div class="container py-md-4 py-3 text-center">
+            <div class="row my-lg-4 mt-4">
+                <div class="col-lg-9 col-md-10 mx-auto">
+                    <div class="subscribe mx-auto">
+
+                        <div class="title-heading-w3 text-center mx-auto mb-mt-5 pb-sm-4" style="max-width:600px">
+                            <h3 class="title-style"><span>View product</span></h3>
+                        </div>
+
+
+                        <table class="table table-bordered">
+
+                            <tbody>
+                                <th>Product id</th>
+                                <th>Product name</th>
+                                <th>View product</th>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            web3 = new Web3(web3.currentProvider);
+            var accountisobtained = ""; //accountis
+            web3.eth.getAccounts().then(function(res) {
+                accountisobtained = res[0];
+                $('#acd').html(accountisobtained);
+                var web3dictdata = {
+                    gasPrice: web3.utils.stringToHex(gasPriceval),
+                    gas: web3.utils.stringToHex(gasval),
+                    to: address,
+                    //  value: web3.utils.toWei('1', "ether"),
+                    from: accountisobtained,
+                }
+                contract.methods.viewUploadedproducts(accountisobtained).call().then(function(recordResults) {
+                    console.log(recordResults)
+                    for (var i = 0; i < recordResults.length; i++) {
+                        var str2 = recordResults[i][2];
+                        if (str2 == "") {
+                            continue;
+                        } else {
+
+                            var allrec = recordResults[i][1] + "|" + recordResults[i][2] + "|" + recordResults[i][3] + "|" + recordResults[i][4] + "|" + recordResults[i][5] + "|" + recordResults[i][6] + "|" + recordResults[i][7]
+                            markup = "<tr><td>" + recordResults[i][2] + "</td><td>" + recordResults[i][3] + "</td><td><form action=\"/displayProduct\" method=\"post\"><input type=\"hidden\" name=\"fname\" value=\"" + allrec + "\"><input type=\"submit\" id=\"" + recordResults[i][6] + "\" value=\"View product\" class=\"btn btn-success\" style=\"background-color: #32CD32;\"></form></td></tr>";
+                            tableBody = $("table tbody");
+                            tableBody.append(markup);
+
+                            var typeofuser = "manufacturer";
+
+                            var username = recordResults[i][6];
+                            var password = recordResults[i][7];
+
+                            contract.methods.validateProduct(accountisobtained, username, password, typeofuser).call().then(function(recordResults1) {
+                                console.log(recordResults1)
+                                for (var j = 0; j < recordResults1.length; j++) {
+                                    var str = recordResults1[j][6];
+                                    console.log(str)
+                                    if (str != typeofuser) {
+                                        document.getElementById(recordResults1[j][1]).style.backgroundColor = "#f44336";
+                                        document.getElementById(recordResults1[j][1]).disabled = true;
+                                    }
+
+                                }
+                            })
+
+                        }
+                        <!--}-->
+                    }
+                    $('table').show();
+                })
+                return false;
+            });
+            return false;
+
+        });
+    </script>
+    <!-- //contact -->
+
+
+
+
+    <!-- footer -->
+    <footer class="w3l-footer-29-main">
+        <div class="footer-29-w3l py-5">
+            <div class="container py-4">
+                <div class="row footer-top-29">
+                    <div class="col-lg-4 col-md-6 col-sm-7 footer-list-29 footer-1 pr-lg-5">
+                        <div class="footer-logo mb-3">
+                            <a class="footer-brand-logo" href="index.html"><i class="fas fa-tools mr-1"
+                                    aria-hidden="true"></i>Industries</a>
+                        </div>
+                        <p>Lorem ipsum viverra feugiat. Pellen tesque libero ut justo, ultrices in ligula. Semper at tempufddfel. Lorem ipsum dolor sit amet Semper at elit.</p>
+                        <div class="main-social-footer-29 mt-4">
+                            <a href="#facebook" class="facebook"><span class="fab fa-facebook-f"></span></a>
+                            <a href="#twitter" class="twitter"><span class="fab fa-twitter"></span></a>
+                            <a href="#instagram" class="instagram"><span class="fab fa-instagram"></span></a>
+                            <a href="#linkedin" class="linkedin"><span class="fab fa-linkedin-in"></span></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-5 col-6 footer-list-29 footer-2 mt-sm-0 mt-5">
+                        <ul>
+                            <h6 class="footer-title-29">Usefull Links</h6>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="#careers">Services</a></li>
+                            <li><a href="#blog">Blog Posts</a></li>
+                            <li class="mb-0"><a href="contact.html">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-5 col-6 footer-list-29 footer-3 mt-lg-0 mt-5 pl-lg-4">
+                        <h6 class="footer-title-29">More Info</h6>
+                        <ul>
+                            <li><a href="#support">Support</a></li>
+                            <li><a href="#privacy">Privacy Policy</a></li>
+                            <li><a href="#terms">Terms & conditions</a></li>
+                            <li><a href="#help">Help</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-7 footer-list-29 footer-4 mt-lg-0 mt-5 pl-lg-5">
+                        <h6 class="footer-title-29">Newsletter</h6>
+                        <form action="#" class="subscribe d-flex align-items-center" method="post">
+                            <input type="email" name="email" placeholder="Email Address" required="">
+                            <button><span class="fa fa-paper-plane" aria-hidden="true"></span></button>
+                        </form>
+                        <h6 class="footer-title-29 pt-2 mt-4 mb-3">Give us a free call: </h6>
+                        <a href="tel:+12 23456790">+12 23456790</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- copyright -->
+        <div class="w3l-copyright">
+            <div class="container">
+                <div class="row bottom-copies align-items-center">
+                    <p class="col-lg-8 copy-footer-29">@ 2021 Industries. All rights reserved. Design by <a href="https://w3layouts.com/" target="_blank">
+                            W3Layouts</a></p>
+                    <div class="col-lg-4 footer-list-29 footer-copy-list">
+                        <ul class="text-lg-right">
+                            <li><a href="#careers"> Careers</a></li>
+                            <li class="mx-lg-5 mx-md-4 mx-3"><a href="#faq">FAQ</a></li>
+                            <li><a href="contact.html">Contact us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- //copyright -->
+    <!-- //footer -->
+
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fas fa-level-up-alt" aria-hidden="true"></span>
+    </button>
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- //move top -->
+
+    <!-- common jquery plugin -->
+    <!-- //common jquery plugin -->
+
+    <!-- theme switch js (light and dark)-->
+    <script src="{{url_for('static',filename='js/theme-change.js')}}"></script>
+    <script>
+        function autoType(elementClass, typingSpeed) {
+            var thhis = $(elementClass);
+            thhis.css({
+                "position": "relative",
+                "display": "inline-block"
+            });
+            thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+            thhis = thhis.find(".text-js");
+            var text = thhis.text().trim().split('');
+            var amntOfChars = text.length;
+            var newString = "";
+            thhis.text("|");
+            setTimeout(function() {
+                thhis.css("opacity", 1);
+                thhis.prev().removeAttr("style");
+                thhis.text("");
+                for (var i = 0; i < amntOfChars; i++) {
+                    (function(i, char) {
+                        setTimeout(function() {
+                            newString += char;
+                            thhis.text(newString);
+                        }, i * typingSpeed);
+                    })(i + 1, text[i]);
+                }
+            }, 1500);
+        }
+
+        $(document).ready(function() {
+            // Now to start autoTyping just call the autoType function with the 
+            // class of outer div
+            // The second paramter is the speed between each letter is typed.   
+            autoType(".type-js", 200);
+        });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+
+    <!-- MENU-JS -->
+    <script>
+        $(window).on("scroll", function() {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function() {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function() {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+    </script>
+    <!-- //MENU-JS -->
+
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+        $(function() {
+            $('.navbar-toggler').click(function() {
+                $('body').toggleClass('noscroll');
+            })
+        });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+
+    <!--bootstrap-->
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+</body>
+
+</html>
